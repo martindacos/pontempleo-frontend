@@ -1,0 +1,538 @@
+<div class="content">
+
+    <div class="row center" ng-if="!ready">
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+
+        <!--Left column-->
+        <div class="col s12">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="!loading" ng-class="class">
+
+        <!--Tabs-->
+        <div class="row center z-depth-1">
+            <div class="col s12 teal lighten-1">
+                <ul class="tabs teal lighten-1 ">
+                    <li ng-repeat="elem in graphs track by $index" ng-click="$parent.currentModel = $index" class="tab">
+                        <a ng-class="{'active':$parent.currentModel == $index }" class="grey-text text-lighten-2">Model
+                            {{$index}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!--Content-->
+        <div ng-repeat="elem in graphs track by $index" ng-show="currentModel == '{{$index}}'" id="{{$index}}">
+
+
+            <div class="row">
+
+                <!--Left column-->
+                <div class="col s12 l9 ">
+
+                    <!--Graph card-->
+                    <div class="col s12" id="graph-div">
+                        <div class="card main-process">
+                            <div class="card-content">
+
+                                <!--Title-->
+                                <span class="card-title">Model {{index}}   <a href="" class="right black-text"
+                                                                              ng-click="save()"><i
+                                        class="material-icons right">save</i></a> </span>
+
+                                <!--Graph-->
+                                <div class="center" ng-bind-html="elem.graph" style="width: 100%" id="graph">
+                                </div>
+
+
+                                <!--Activity HeatMap data-->
+                                <div ng-show="chunksize > 0 && actmap">
+                                    <br>
+                                    <h5>Heatmap colors</h5>
+                                    <p><i class="material-icons orange-text text-lighten-5">stop</i> 0% - {{chunksize * 100|
+                                        number: 2}}%</p>
+                                    <p><i class="material-icons orange-text text-lighten-3">stop</i> {{chunksize * 100 |
+                                        number: 2}}% - {{chunksize * 2 * 100| number: 2}}%</p>
+                                    <p><i class="material-icons orange-text text-darken-1">stop</i> {{chunksize * 2 * 100|
+                                        number: 2}}% - {{chunksize * 3 * 100| number: 2}}%</p>
+                                    <p><i class="material-icons orange-text text-darken-3">stop</i> {{chunksize * 3 * 100|
+                                        number: 2}}% - {{chunksize * 4 * 100| number: 2}}%</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Right column-->
+                <div class="col s12 l3">
+
+                    <!--Frequent patterns-->
+                    <div class="col s12">
+                        <div class="card">
+
+                            <!--Loader-->
+                            <div class="card-color" ng-show="fLoading">
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+
+                            <!--Title-->
+                            <div class="card-content grey lighten-5">
+
+                                <div class="card-title">
+                                    Frequent patterns
+                                    <div class="switch right">
+                                        <label>
+
+                                            <input type="checkbox" ng-model="showfp" ng-click="map()">
+                                            <span class="lever"></span>
+
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!--<span class="card-title activator">
+                                    Frequent patterns <i class="material-icons right" ng-click="$parent.sfp = !$parent.sfp">save</i>
+                                </span>-->
+
+                                <!--Get patterns-->
+                                <form ng-show="showfp">
+                                    <p class="range-field">
+                                        <label>Threshold: {{$parent.fthreshold}}</label>
+                                        <input type="range" min="0" max="1" step="0.1" ng-model="$parent.fthreshold"/>
+                                    </p>
+                                    <button ng-click="getFrequentPatterns()" class="btn waves">Get Patterns</button>
+                                </form>
+
+                            </div>
+
+                            <!--Pattern tabs-->
+                            <div class="col s12" >
+                                <ul class="tabs" ng-show="fp.length > 0 && !$parent.sfp && showfp">
+                                    <li class="tab" ng-repeat="pattern in fp track by $index"
+                                        ng-click="colorPattern(pattern)">
+
+                                        <a href="" ng-click="$parent.currentTabP = $index">FP {{$index}} </a>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!--Save -->
+                            <div class="card-content" ng-show="fp.length > 0 && !$parent.sfp && showfp">
+                                <div class="row">
+
+
+                                    <p><b>Frequency: </b> {{fp[currentTabP].frequency}} </p>
+                                    <p><b>Number of tasks: </b> {{fp[currentTabP].numTasks}} </p>
+
+
+                                </div>
+                            </div>
+
+                            <!--Pattern
+                            <div class="card-content" ng-show="fp.length > 0 && !$parent.sfp">
+                                <div ng-repeat="pattern in fp" ng-show="currentTabP == 'fp{{$index}}'">
+                                    <p ng-bind-html="pattern.graph" class="center"></p>
+                                    <div class="row">
+                                        <a href="" class="right" ng-click="postFrequentPattern(pattern)">Save model</a>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                            <!--Saved patterns-->
+                            <div class="card-content" ng-show="$parent.sfp">
+
+                                <!--Title-->
+                                <span class="card-title grey-text text-darken-4">Saved patters
+                                <i class="material-icons right">close</i>
+                            </span>
+
+                                <div>
+
+                                    <ul class="tabs">
+                                        <li ng-repeat="pattern in elem.fp track by $index" class="tab col active"
+                                            ng-click="colorPattern(pattern)">
+                                            <a href="" ng-class="{'active':$parent.currentTabSP == 'sfp'+ $index }">FP
+                                                {{$index}}</a>
+                                        </li>
+                                    </ul>
+
+                                    <p ng-repeat="pattern in elem.fp" ng-show="currentTabSP == 'sfp{{$index}}'"
+                                       class="center" ng-bind-html="pattern">
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Infrequent patterns-->
+                    <div class="col s12">
+                        <div class="card">
+
+                            <!--Spinner-->
+                            <div class="card-color" ng-show="iLoading">
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+
+                            <!--Title-->
+                            <div class="card-content grey lighten-5">
+
+                                <div class="card-title">
+                                    Infrequent patterns
+                                    <div class="switch right">
+                                        <label>
+
+                                            <input type="checkbox" ng-model="showip" ng-click="map()">
+                                            <span class="lever"></span>
+
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <!--Get patterns-->
+                                <form ng-show="showip">
+                                    <p class="range-field">
+                                        <label>Threshold: {{$parent.ithreshold}}</label>
+                                        <input type="range" min="0" max="1" step="0.1" ng-model="$parent.ithreshold"/>
+                                    </p>
+                                    <button ng-click="getInfrequentPatterns()" class="btn waves">Get Patterns</button>
+                                </form>
+
+                            </div>
+
+                            <!--Pattern tabs-->
+                            <div class="card-tabs" ng-show="ip.length > 0 && !$parent.sip && showip">
+                                <ul class="tabs">
+                                    <li ng-repeat="pattern in ip track by $index" class="tab"
+                                        ng-click="colorPattern(pattern)">
+                                        <a href="" ng-click="$parent.currentTab = $index">IP
+                                            {{$index}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!--Save -->
+                            <div class="card-content" ng-show="ip.length > 0 && !$parent.sip && showip">
+                                <div class="row">
+
+                                    <p><b>Frequency: </b> {{ip[currentTab].frequency}} </p>
+                                    <p><b>Number of tasks: </b> {{ip[currentTab].numTasks}} </p>
+
+                                </div>
+                            </div>
+
+                            <!--Pattern-->
+                            <div class="card-content" ng-show="ip.length > 100 && !$parent.sip && showip">
+                                <div ng-repeat="pattern in ip" ng-show="currentTab == 'ip{{$index}}'">
+                                    <p ng-bind-html="pattern.graph" class="center"></p>
+                                    <div class="row">
+                                        <a href="" class="right" ng-click="postFrequentPattern(pattern)">Save model</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Saved patterns-->
+                            <div class="card-content" ng-show="$parent.sip">
+
+                                <!--Title-->
+                                <span class="card-title grey-text text-darken-4">Saved patters
+                                <i class="material-icons right">close</i>
+                            </span>
+
+                                <div>
+
+                                    <ul class="tabs">
+                                        <li ng-repeat="pattern in elem.ip track by $index" class="tab col active"
+                                            ng-click="colorPattern(pattern)">
+                                            <a ng-class="{'active':$parent.currentTabS == 'sip'+ $index }">FP
+                                                {{$index}}</a>
+                                        </li>
+                                    </ul>
+
+                                    <p ng-repeat="pattern in elem.ip" ng-show="currentTabS == 'sip{{$index}}'"
+                                       class="center" ng-bind-html="pattern">
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Activity Statistics-->
+                    <div class="col s12">
+                        <div class="card">
+
+                            <!--Spinner-->
+                            <div class="card-color" ng-show="sLoading">
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+
+                            <!--Title-->
+                            <div class="card-content grey lighten-5">
+
+                                <!--Title and button-->
+                                <div class="card-title">
+                                    Activity statistics
+                                    <div class="switch right">
+                                        <label>
+
+                                            <input type="checkbox" ng-model="actmap" ng-click="map()">
+                                            <span class="lever"></span>
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <button ng-click="activityStats()" class="btn waves" ng-hide="stats || !actmap">
+                                    Get Statistics
+                                </button>
+
+                            </div>
+
+                            <div class="card-content" ng-show="actmap && stats != null">
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <button ng-click="actFrequencyHeatMap()" class="btn-flat waves">
+                                            See Frequency heatmap
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <button ng-click="actDurationHeatMap()" class="btn-flat waves">
+                                            See Duration heatmap
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="divider"></div>
+                                <br>
+
+                                <div class="row" ng-show="actmap">
+                                    <div class="col s12">
+                                        <p><b>Longest Activity: </b>{{stats.activityLongerShorterDuration[0][0]}}</p>
+                                        <p><b>Shortest Activity: </b>{{stats.activityLongerShorterDuration[1][0]}}</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!--Arc Statistics-->
+                    <div class="col s12">
+                        <div class="card">
+
+                            <!--Spinner-->
+                            <div class="card-color" ng-show="aLoading">
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+
+                            <!--Title-->
+                            <div class="card-content grey lighten-5">
+
+                                <!--Title and button-->
+                                <div class="card-title">
+                                    Prune Arcs
+                                    <div class="switch right">
+                                        <label>
+
+                                            <input type="checkbox" ng-model="astats" ng-click="map()">
+                                            <span class="lever"></span>
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <button ng-click="arcStats()" class="btn waves" ng-hide="aStats || !astats">
+                                    Get Statistics
+                                </button>
+
+                                <!--Get patterns-->
+                                <div id="test-slider"></div>
+                                <form ng-show="astats && aStats != null">
+                                    <p class="range-field">
+                                        <label>Threshold: {{$parent.arcthreshold | number: 2}}</label>
+                                        <input type="range" min="0" max="{{astatsMax}}" step="{{astatsMax / 100}}"
+                                               ng-model="$parent.arcthreshold"
+                                               ng-change="filterArcs()"/>
+                                    </p>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Trace Statistics-->
+                    <div class="col s12">
+                        <div class="card">
+
+                            <!--Spinner-->
+                            <div class="card-color" ng-show="tLoading">
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+
+                            <!--Title-->
+                            <div class="card-content grey lighten-5">
+
+                                <!--Title and button-->
+                                <div class="card-title">
+                                    Trace statistics
+                                    <div class="switch right">
+                                        <label>
+
+                                            <input type="checkbox" ng-model="tstats" ng-click="map()">
+                                            <span class="lever"></span>
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <button ng-click="getTraceStats()" class="btn waves" ng-hide="traceStats || !tstats">Get
+                                    Statistics
+                                </button>
+
+                            </div>
+
+
+                            <div class="card-content" ng-show="traceStats && tstats">
+
+
+                                <!--Duration-->
+                                <div class="row" ng-show="tstats && traceStats">
+                                    <div class="col s12">
+                                        <button class="btn-flat waves"
+                                                ng-click="getTrace(traceStats.traceFrequency[0]._1[0])">
+                                            Get most frequent trace
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!--Main info-->
+
+                    <div class="row">
+                        <div class="col s12 center">
+                            <ul>
+                                <li class="waves-effect waves-light col s3"><a href="" ng-click="info = !info"><i
+                                        class="material-icons grey-text ">insert_chart</i></a>
+                                </li>
+                                <li class="waves-effect waves-light col s3"><a href="" ng-click="deleteModel()"><i
+                                        class="material-icons grey-text">delete</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-show="info">
+                        <div class="col s12">
+                            <p><b>Log: </b> {{log.name}} </p>
+                            <p><b>Model: </b> {{currentModel}}</p>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+            <!--Print button-->
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large red" ng-click="generateReport()">
+                    <i class="large material-icons">insert_chart</i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

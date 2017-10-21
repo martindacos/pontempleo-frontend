@@ -1,0 +1,104 @@
+header, main, footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* fallback */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//fonts.gstatic.com/s/materialicons/v29/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+header, main, footer {
+    padding-left: 0px;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0 !important;
+    }
+}
+
+.nonav {
+    padding-left: 0 !important;
+}
+
+.loading {
+    height: 100vh;
+    width: 100vw;
+}
+
+#mynetwork {
+    height: 600px;
+}
+
+nav {
+    z-index: 999;
+    height: 100px;
+    line-height: 100px;
+}
+
+.card-color {
+    height: 5px;
+}
+
+.main {
+    margin-top: 36px;
+}
+
+#nav-mobile {
+    padding-right: 50px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.login {
+    width: 100vh;
+}
+
+.wrapper {
+    height: 80vh;
+}
+
+.progress {
+    margin: 0;
+}
+
+.small-text {
+    font-size: 0.8em;
+}
+
+.main-process {
+    min-height: 75vh;
+}
+
+.loader{
+    padding-left: 0 !important;
+    width: 100%;
+    height: 100%;
+}
+
+.loaded{
+    visibility: hidden;
+}
+

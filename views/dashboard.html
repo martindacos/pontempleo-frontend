@@ -1,0 +1,39 @@
+<div class="content">
+
+    <!--offers-->
+    <div class="row">
+
+        <!--No offers message-->
+        <h5 class=" center grey-text text-lighten-2" ng-if="offers.length < 1">
+            <br>
+            <br>
+            NO OFFERS IN THE DB
+        </h5>
+
+        <!--Offer card-->
+        <div class="col s12 l6" ng-repeat="offer in offers track by $index">
+            <div class="card ">
+
+                <div class="card-content grey-text text-darken-2">
+
+                    <!--Log data-->
+                    <div>
+                    <span class="card-title activator grey-text text-darken-4">Puesto: {{offer.name}}</span>
+                        <p><b> Fecha: </b> {{offer.date}}</p>
+                    </div>
+
+
+                </div>
+
+                <div class="card-action">
+                    <button href="" class="btn btn-flat grey-text text-darken-4" ng-click="getContent(offer.name)">
+                        Inscribirse
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
