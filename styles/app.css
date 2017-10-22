@@ -37,10 +37,6 @@ header, main, footer {
     }
 }
 
-.nonav {
-    padding-left: 0 !important;
-}
-
 .loading {
     height: 100vh;
     width: 100vw;
@@ -69,7 +65,7 @@ nav {
 }
 
 .card {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .login {
@@ -102,3 +98,6 @@ nav {
     visibility: hidden;
 }
 
+.waves-effect.waves-blue {
+      background-color: rgba(0, 100, 255, 0.8);
+}

@@ -17,6 +17,10 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
              controller: "contactCtrl",
              templateUrl: "views/contact.html"
         })
+        .when("/training", {
+             controller: "trainingCtrl",
+             templateUrl: "views/training.html"
+        })
         .otherwise("/dashboard");
 
 

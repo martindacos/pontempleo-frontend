@@ -4,7 +4,6 @@ angular.module("project").controller("dashboardCtrl", ["$scope", "$http", "$loca
     $('.modal').modal();
     $('select').material_select();
 
-
     $scope.loading = false;
     $scope.source = "DB";
     $scope.get = function () {

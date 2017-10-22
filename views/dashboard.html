@@ -4,7 +4,7 @@
     <div class="row">
 
         <!--No offers message-->
-        <h5 class=" center grey-text text-lighten-2" ng-if="offers.length < 1">
+        <h5 class="center grey-text text-lighten-2" ng-if="offers.length < 1">
             <br>
             <br>
             NO OFFERS IN THE DB
@@ -16,9 +16,14 @@
 
                 <div class="card-content grey-text text-darken-2">
 
-                    <!--Log data-->
+                    <!--Offer data-->
                     <div>
-                    <span class="card-title activator grey-text text-darken-4">Puesto: {{offer.name}}</span>
+                    <span class="card-title activator grey-text text-darken-4">{{offer.name}}</span>
+                        <p><b> Referencia: </b> {{offer.ref}}</p>
+                        <p><b> Zona: </b> {{offer.zone}}</p>
+                        <p><b> Requisitos Mínimos: </b> {{offer.minReq}}</p>
+                        <p><b> Requisitos Deseados: </b> {{offer.req}}</p>
+                        <p><b> Descripción: </b> {{offer.description}}</p>
                         <p><b> Fecha: </b> {{offer.date}}</p>
                     </div>
 

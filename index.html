@@ -5,7 +5,7 @@
     <base href="">
     <meta charset="UTF-8">
     <title>Pontempleo</title>
-    <link rel="shortcut icon" type="image/png" href="/img/logo.png" />
+    <link rel="shortcut icon" type="image/png" href="#/img/logo.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -27,6 +27,7 @@
     <script src="scripts/controllers/indexCtrl.js"></script>
     <script src="scripts/controllers/dashboardCtrl.js"></script>
     <script src="scripts/controllers/resultCtrl.js"></script>
+    <script src="scripts/controllers/trainingCtrl.js"></script>
 
     <!--Services-->
     <script src="scripts/services/postService.js"></script>
@@ -76,16 +77,19 @@
 
 <!--Navigation-->
 <header  ng-class="class" >
-
     <!--Include navbar-->
     <div ng-include="'views/navbar.html'"></div>
-
 </header>
 
 <!--Body-->
 <main ng-class="class">
     <div ng-view class="main"></div>
 </main>
+
+<footer class="page-footer orange">
+    <!--Include navbar-->
+    <div ng-include="'views/footer.html'"></div>
+</footer>
 
 </body>
 </html>
