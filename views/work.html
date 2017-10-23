@@ -1,0 +1,36 @@
+<!--offers-->
+<div class="container-fluid">
+    <div class="card-group equal">
+
+        <!--No offers message-->
+        <h5 ng-if="offers.length < 1">
+            <br>
+            <br>
+            NO OFFERS IN THE DB
+        </h5>
+
+        <!--Offer card-->
+        <div class="card col-md-6" ng-repeat="offer in offers track by $index">
+            <h3 class="card-header">{{offer.name}}</h3>
+
+            <div class="card-block">
+
+                <!--Offer data-->
+                <div>
+                    <p class="card-text"><b> Referencia: </b> {{offer.ref}}</p>
+                    <p class="card-text"><b> Zona: </b> {{offer.zone}}</p>
+                    <p class="card-text"><b> Requisitos Mínimos: </b> {{offer.minReq}}</p>
+                    <p class="card-text"><b> Requisitos Deseados: </b> {{offer.req}}</p>
+                    <p class="card-text"><b> Descripción: </b> {{offer.description}}</p>
+                    <p class="card-text"><b> Fecha: </b> {{offer.date}}</p>
+                </div>
+
+                <div class="card-footer center">
+                    <a ng-click="getContent(offer.name)" class="btn btn-primary">Inscribirse</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

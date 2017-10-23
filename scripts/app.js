@@ -9,6 +9,10 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
             controller: "dashboardCtrl",
             templateUrl: "views/dashboard.html"
         })
+        .when("/work", {
+            controller: "workCtrl",
+            templateUrl: "views/work.html"
+        })
         .when("/result", {
             controller: "resultCtrl",
             templateUrl: "views/result.html"
@@ -20,6 +24,9 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
         .when("/training", {
              controller: "trainingCtrl",
              templateUrl: "views/training.html"
+        })
+        .when("/legal", {
+              templateUrl: "views/legal.html"
         })
         .otherwise("/dashboard");
 

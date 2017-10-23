@@ -1,24 +1,19 @@
-<!--Navbar-->
-<div class="navbar-fixed class" ng-controller="indexCtrl" >
-
-    <nav class="orange class" role="navigation">
-
-        <div class="nav-wrapper container"><a href="#" class="brand-logo"><img src="img/logo.png" style="width:300px;height:100px;"></a>
-            <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li ng-class="{ active: isActive('/dashboard')}"><a href="#"> Trabajo </a></li>
-                <li ng-class="{ active: isActive('/training')}"><a href="#/training"> Formación </a></li>
-                <li ng-class="{ active: isActive('/contact')}"><a href="#/contact"> Contacto </a></li>
-            </ul>
-
-            <ul id="nav-mobile" class="side-nav">
-                <li ng-class="{ active: isActive('/dashboard')}"><a href="#"> Trabajo </a></li>
-                <li ng-class="{ active: isActive('/training')}"><a href="#/training"> Formación </a></li>
-                <li ng-class="{ active: isActive('/contact')}"><a href="#/contact"> Contacto </a></li>
-            </ul>
-
+ <nav class="navbar navbar-default navbar-fixed-top" ng-controller="indexCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/logo.png" style="width:250px;height:80px;"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: isActive('/work')}"><a href="#/work">Trabajo</a></li>
+                    <li ng-class="{ active: isActive('/training')}"><a href="#/training"> Formación </a></li>
+                    <li ng-class="{ active: isActive('/contact')}"><a href="#/contact"> Contacto </a></li>
+                </ul>
+            </div>
         </div>
-    </nav>
-
-
-</div>
+ </nav>

@@ -19,6 +19,7 @@
     <!--Materialize-->
     <script src="vendor/jquery.js"></script>
     <script src="vendor/materialize.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!--App-->
     <script src="scripts/app.js"></script>
@@ -28,6 +29,7 @@
     <script src="scripts/controllers/dashboardCtrl.js"></script>
     <script src="scripts/controllers/resultCtrl.js"></script>
     <script src="scripts/controllers/trainingCtrl.js"></script>
+    <script src="scripts/controllers/workCtrl.js"></script>
 
     <!--Services-->
     <script src="scripts/services/postService.js"></script>
@@ -43,8 +45,12 @@
 
     <!--Styles-->
     <link rel="stylesheet" href="styles/materialize.css">
-    <link rel="stylesheet" href="styles/app.css">
     <link rel="stylesheet" href="styles/spinner.css">
+
+    <!-- New Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app.css">
+
 
     <!--Sweet alerts-->
     <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
@@ -86,7 +92,7 @@
     <div ng-view class="main"></div>
 </main>
 
-<footer class="page-footer orange">
+<footer>
     <!--Include navbar-->
     <div ng-include="'views/footer.html'"></div>
 </footer>
