@@ -1,8 +1,6 @@
 angular.module("project").controller("workCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
 
-    //Activate modals
-    $('.modal').modal();
-    $('select').material_select();
+    $('#myModal').modal('hide');
 
     $scope.loading = false;
     $scope.source = "DB";
@@ -19,6 +17,10 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
 
     $scope.setOffer = function(offer){
         $scope.offer = offer;
+    };
+
+    $scope.setInscription = function(inscription){
+        console.log(inscription);
     };
 
 }]);
