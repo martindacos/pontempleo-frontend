@@ -1,0 +1,45 @@
+<!--offers-->
+<div class="container-fluid">
+    <div class="panel-group equal">
+        <div class="col-md-6">
+            <h3>Crear nueva oferta</h3>
+            <form ng-submit="newOffer()" id="newOfferForm" role="form" name="newOfferForm">
+                <div>
+                    <div class="form-group">
+                        <label for="nameOffer">Nombre *</label>
+                        <input type="text" ng-model="nameOffer" class="form-control" id="nameOffer" placeholder=""
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zoneOffer">Zona *</label>
+                        <input type="text" ng-model="zoneOffer" class="form-control" id="zoneOffer" placeholder=""
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reqMinOffer">Requisitos Mínimos *</label>
+                        <textarea class="form-control" ng-model="reqMinOffer" id="reqMinOffer" placeholder="" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="reqDesOffer">Requisitos Deseados *</label>
+                        <textarea class="form-control" ng-model="reqDesOffer" id="reqDesOffer" placeholder="" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionOffer">Descripción *</label>
+                        <textarea class="form-control" ng-model="descriptionOffer" id="descriptionOffer" placeholder="" required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-danger" ng-click="resetNewOffer()">
+                            Reset
+                        </button>
+                        <button type="submit" class="btn btn-default submit">
+                            Publicar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Previsualización</h3>
+        </div>
+    </div>
+</div>

@@ -21,6 +21,14 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
              controller: "trainingCtrl",
              templateUrl: "views/training.html"
         })
+        .when("/newOffer", {
+             controller: "newOfferCtrl",
+             templateUrl: "views/newOffer.html"
+        })
+        .when("/modifyOffer", {
+                     controller: "modifyOfferCtrl",
+                     templateUrl: "views/modifyOffer.html"
+        })
         .when("/legal", {
               templateUrl: "views/legal.html"
         })
@@ -32,6 +40,6 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
 
         //Init vars
         $rootScope.showNav = true;
-        console.log($rootScope.showNav);
+        //console.log($rootScope.showNav);
 
     }]);

@@ -132,3 +132,7 @@ footer {
     padding:0px;
     list-style-type: none;
 }
+
+#description {
+    resize: none;
+}

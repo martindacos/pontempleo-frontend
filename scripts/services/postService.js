@@ -24,4 +24,74 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
 
     };
 
+    //New Offer
+    this.postOffer = function (uploadUrl, nameOffer, zoneOffer, reqMinOffer, reqDesOffer, descriptionOffer) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        var fd = new FormData();
+        fd.append('nameOffer', nameOffer);
+        fd.append('zoneOffer', zoneOffer);
+        fd.append('reqMinOffer', reqMinOffer);
+        fd.append('reqDesOffer', reqDesOffer);
+        fd.append('descriptionOffer', descriptionOffer);
+
+        //Promise
+        return $http.post(uploadUrl, fd, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
+    //Delete Offer
+    this.deleteOffer = function (uploadUrl, ref) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        //Promise
+        return $http.post(uploadUrl + ref, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
+    //Modify Offer
+    this.modifyOffer = function (uploadUrl, nameOffer, refOffer, zoneOffer, reqMinOffer, reqDesOffer, descriptionOffer, dateOffer, active) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        var fd = new FormData();
+        fd.append('nameOffer', nameOffer);
+        fd.append('refOffer', refOffer);
+        fd.append('zoneOffer', zoneOffer);
+        fd.append('reqMinOffer', reqMinOffer);
+        fd.append('reqDesOffer', reqDesOffer);
+        fd.append('descriptionOffer', descriptionOffer);
+        fd.append('dateOffer', dateOffer);
+        fd.append('active', active);
+
+        //Promise
+        return $http.post(uploadUrl, fd, config).then(function (response) {
+            return (response);
+        });
+
+    };
 }]);
