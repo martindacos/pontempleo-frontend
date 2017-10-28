@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="card-group equal">
+    <div class="panel-group equal">
 
         <!--No offers message-->
         <h5 ng-if="courses.length < 1">
@@ -9,15 +9,15 @@
         </h5>
 
         <!--Offer card-->
-        <div class="col-md-6" ng-repeat="course in courses track by $index">
-            <div class="card">
-                <h3 class="card-header">{{course.name}}</h3>
+        <div class="panel panel-default col-md-6" ng-repeat="course in courses track by $index">
+            <h3 class="panel-heading">{{course.name}}</h3>
 
+            <div class="panel-body">
                 <div class="col-md-6">
                     <img src={{course.img}} style="width:100%;height:100%;object-fit: contain">
                 </div>
 
-                <div class="card-block">
+                <div class="col-md-6">
 
                     <!--Offer data-->
                     <div>
@@ -29,11 +29,10 @@
                         <p ng-if="course.direction.length > 1"><b> Dirección: </b> {{course.direction}}</p>
                     </div>
 
-                    <div class="card-footer center">
+                    <div class="panel-footer center">
                         <a ng-click="getContent(offer.name)" class="btn btn-primary">Solicitar</a>
                     </div>
                 </div>
-
             </div>
         </div>
 

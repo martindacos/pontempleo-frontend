@@ -5,7 +5,7 @@ nav {
 }
 
 .main {
-    margin-top: 180px;
+    margin-top: 120px;
 }
 
 .wrapper {
@@ -29,9 +29,8 @@ nav {
   margin: 25px 15px 25px 0;
 }
 
-.card {
+.panel {
     overflow: auto;
-    padding: 20px;
 }
 
 .equal {
@@ -127,3 +126,9 @@ footer {
     border-color: #FFA500;
      }
  }
+
+.nomargin {
+    margin:0px;
+    padding:0px;
+    list-style-type: none;
+}

@@ -10,6 +10,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
                 $scope.offers = response.data;
             }, function error(response) {
                 $scope.offers = [];
+                swal('Error!', 'An error ocurred :(', 'error');
             });
     };
 
@@ -19,9 +20,14 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
         $scope.offer = offer;
     };
 
-    $scope.setInscription = function(inscription){
+    $scope.setInscription = function(name, inscription){
         console.log(inscription);
+        var myEl = angular.element( document.querySelector( '#title' ) );
+        myEl.html(name);
     };
 
+    $scope.resetOffer = function(){
+        document.getElementById('myOfferForm').reset();
+    };
 }]);
 

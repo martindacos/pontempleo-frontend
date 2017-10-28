@@ -13,11 +13,8 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
             controller: "workCtrl",
             templateUrl: "views/work.html"
         })
-        .when("/result", {
-            controller: "resultCtrl",
-            templateUrl: "views/result.html"
-        })
         .when("/contact", {
+             controller: "contactCtrl",
              templateUrl: "views/contact.html"
         })
         .when("/training", {
