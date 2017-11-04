@@ -94,4 +94,33 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
         });
 
     };
+
+    //Modify Course
+        this.modifyCourse = function (uploadUrl, nameCourse, zoneCourse, descriptionCourse, fechaIniCourse, fechaFinCourse, directionCourse, horarioCourse, active, imageCourse) {
+
+            //Set config
+            var config = {
+                headers: {
+                    'Content-Type': undefined
+                },
+                transformRequest: angular.identity
+            };
+
+            var fd = new FormData();
+            fd.append('nameCourse', nameCourse);
+            fd.append('zoneCourse', zoneCourse);
+            fd.append('descriptionCourse', descriptionCourse);
+            fd.append('fechaIniCourse', fechaIniCourse);
+            fd.append('fechaFinCourse', fechaFinCourse);
+            fd.append('directionCourse', directionCourse);
+            fd.append('horarioCourse', horarioCourse);
+            fd.append('active', active);
+            fd.append('imageCourse', imageCourse);
+
+            //Promise
+            return $http.post(uploadUrl, fd, config).then(function (response) {
+                return (response);
+            });
+
+        };
 }]);

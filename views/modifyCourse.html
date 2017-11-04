@@ -1,0 +1,108 @@
+<!--offers-->
+<div class="container-fluid">
+    <div>
+
+        <!--No offers message-->
+        <h5 ng-if="courses.length < 1">
+            <br>
+            <br>
+            NO HAY CURSOS EN LA BASE DE DATOS
+        </h5>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Zona</th>
+                <th>Descripción</th>
+                <th>Horario</th>
+                <th>Dirección</th>
+                <th>Imagen</th>
+                <th>F. Inicio</th>
+                <th>F. Fin</th>
+                <th>Activa</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-class="{ success: course.active, danger: !course.active}" ng-repeat="course in courses track by $index">
+                <td>{{course.name}}</td>
+                <td>{{course.zone}}</td>
+                <td>{{course.description}}</td>
+                <td>{{course.time}}</td>
+                <td>{{course.direction}}</td>
+                <td><img style="display:block;" width="200px" height="200px" src={{course.img}}></td>
+                <td>{{course.dateIni}}</td>
+                <td>{{course.dateFin}}</td>
+                <td>{{course.active}}</td>
+                <td><span class="glyphicon glyphicon-remove" ng-click="deleteCourse(course.name)"></span>
+                    <span class="glyphicon glyphicon-edit" ng-click="editCourse(course)" data-toggle="modal" data-target="#editCourseModal"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="editCourseModal" class="modal fade" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modificar Curso</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nameCourse">Nombre</label>
+                    <input type="text" ng-model="nameCourse" class="form-control" id="nameCourse" name="nameCourse"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="zoneCourse">Zona</label>
+                    <input type="text" ng-model="zoneCourse" class="form-control" id="zoneCourse"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionCourse">Descripción</label>
+                    <textarea class="form-control" ng-model="descriptionCourse" id="descriptionCourse" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="dateCourse">Horario</label>
+                    <input type="text" ng-model="dateCourse" class="form-control" id="dateCourse">
+                </div>
+                <div class="form-group">
+                    <label for="directionCourse">Dirección</label>
+                    <input type="text" ng-model="directionCourse" class="form-control" id="directionCourse">
+                </div>
+                <div class="form-group">
+                    <label for="imageCourse">Imagen</label>
+                    <input type="image" ng-src="{{imageCourse}}" class="form-control" id="imageCourse" width="200" height="200">
+                </div>
+                <div class="form-group">
+                    <label for="fechaIniCourse">F. Inicio</label>
+                    <input type="text" ng-model="fechaIniCourse" class="form-control" id="fechaIniCourse">
+                </div>
+                <div class="form-group">
+                    <label for="fechaFinCourse">F. Fin</label>
+                    <input type="text" ng-model="fechaFinCourse" class="form-control" id="fechaFinCourse">
+                </div>
+                <div class="form-group">
+                    <label>Activa</label>
+                    <input type="radio" ng-model="test" value=true ng-checked=activeCourse> Sí<br>
+                    <input type="radio" ng-model="test" value=false ng-checked=!activeCourse> No<br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-success submit" ng-click="modifyCourse()">
+                    Modificar
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

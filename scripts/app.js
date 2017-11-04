@@ -26,8 +26,12 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
              templateUrl: "views/newOffer.html"
         })
         .when("/modifyOffer", {
-                     controller: "modifyOfferCtrl",
-                     templateUrl: "views/modifyOffer.html"
+             controller: "modifyOfferCtrl",
+             templateUrl: "views/modifyOffer.html"
+        })
+        .when("/modifyCourse", {
+                     controller: "modifyCourseCtrl",
+                     templateUrl: "views/modifyCourse.html"
         })
         .when("/legal", {
               templateUrl: "views/legal.html"

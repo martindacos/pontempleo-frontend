@@ -8,6 +8,7 @@ $scope.newOffer = function(){
     postService.postOffer(uploadUrl, $scope.nameOffer, $scope.zoneOffer, $scope.reqMinOffer, $scope.reqDesOffer, $scope.descriptionOffer)
     .then(function success(response) {
         document.getElementById('newOfferForm').reset();
+        swal('OK', 'Oferta añadida correctamente','success')
     }, function error(response) {
         swal('Error!', 'An error ocurred :(', 'error');
     });

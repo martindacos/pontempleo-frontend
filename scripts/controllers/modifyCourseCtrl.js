@@ -1,13 +1,13 @@
-angular.module("project").controller("modifyOfferCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
+angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
 
     $scope.loading = false;
     $scope.source = "DB";
     $scope.get = function () {
-        restService.get(restService.url, "allOffers/", '')
+        restService.get(restService.url, "allCourses/", '')
             .then(function (response) {
-                $scope.offers = response.data;
+                $scope.courses = response.data;
             }, function error(response) {
-                $scope.offers = [];
+                $scope.courses = [];
                 swal('Error!', 'An error ocurred :(', 'error');
             });
     };
@@ -39,31 +39,31 @@ angular.module("project").controller("modifyOfferCtrl", ["$scope", "$http", "$lo
         })
     };
 
-    $scope.editOffer = function(of){
-        $scope.editOf = of;
-        $scope.nameOffer = of.name;
-        $scope.refOffer = of.ref;
-        $scope.zoneOffer = of.zone;
-        $scope.reqMinOffer = of.minReq;
-        $scope.reqDesOffer = of.req;
-        $scope.descriptionOffer = of.description;
-        $scope.dateOffer = of.date;
-        $scope.activeOffer = of.active;
-        $scope.test = of.active;
+    $scope.editCourse = function(course){
+        $scope.editOf = course;
+        $scope.nameCourse = course.name;
+        $scope.zoneCourse = course.zone;
+        $scope.descriptionCourse = course.description;
+        $scope.dateCourse = course.time;
+        $scope.activeCourse = course.active;
+        $scope.fechaIniCourse = course.dateIni;
+        $scope.fechaFinCourse = course.dateFin;
+        $scope.directionCourse = course.direction;
+        $scope.imageCourse = course.img;
+        $scope.test = course.active;
     };
 
-    $scope.modifyOffer = function(){
+    $scope.modifyCourse = function(){
         //Set vars
-        var uploadUrl = restService.url + 'modifyOffer';
+        var uploadUrl = restService.url + 'modifyCourse';
         console.log($scope.test);
 
-        postService.modifyOffer(uploadUrl, $scope.nameOffer, $scope.refOffer, $scope.zoneOffer, $scope.reqMinOffer, $scope.reqDesOffer, $scope.descriptionOffer
-        , $scope.dateOffer, $scope.test)
+        postService.modifyCourse(uploadUrl, $scope.nameCourse, $scope.zoneCourse, $scope.descriptionCourse, $scope.fechaIniCourse, $scope.fechaFinCourse, $scope.directionCourse
+        , $scope.dateCourse, $scope.test, $scope.imageCourse)
         .then(function success(response) {
-             $('#editOfferModal').modal('hide');
-            //$('#editOfferModal').modal('close');
+             $('#editCourseModal').modal('hide');
             $scope.get();
-            swal('OK', 'Oferta modificada correctamente','success')
+            swal('OK', 'Curso modificado correctamente','success')
         }, function error(response) {
             swal('Error!', 'An error ocurred :(', 'error');
         });
