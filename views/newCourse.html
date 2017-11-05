@@ -1,0 +1,55 @@
+<!--offers-->
+<div class="container-fluid">
+    <div class="panel-group equal">
+        <div class="col-md-6">
+            <h3>Crear nueva oferta</h3>
+            <form ng-submit="newCourse()" id="newCourseForm" role="form" name="newCourseForm">
+                <div>
+                    <div class="form-group">
+                        <label for="nameCourse">Nombre *</label>
+                        <input type="text" ng-model="nameCourse" class="form-control" id="nameCourse" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionCourse">Descripción *</label>
+                        <textarea class="form-control" ng-model="descriptionCourse" id="descriptionCourse" placeholder="" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imgCourse">Imagen *</label>
+                        <input type="file" file-model="data.file" accept="image/*" ng-model="imgCourse" class="form-control" id="imgCourse" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zoneCourse">Zona</label>
+                        <input type="text" ng-model="zoneCourse" class="form-control" id="zoneCourse" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeCourse">Horario</label>
+                        <input type="text" ng-model="timeCourse" class="form-control" id="timeCourse" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="directionCourse">Dirección</label>
+                        <input type="text" ng-model="directionCourse" class="form-control" id="directionCourse">
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaIniCourse">Fecha Inicio</label>
+                        <input type="date" ng-model="fechaIniCourse" class="form-control" id="fechaIniCourse" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaFinCourse">Fecha Fin</label>
+                        <input type="date" ng-model="fechaFinCourse" class="form-control" id="fechaFinCourse">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-danger" ng-click="resetNewCourse()">
+                            Reset
+                        </button>
+                        <button type="submit" class="btn btn-default submit">
+                            Publicar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Previsualización</h3>
+        </div>
+    </div>
+</div>

@@ -14,24 +14,24 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$l
 
     $scope.get();
 
-    $scope.deleteOffer = function(ref){
+    $scope.deleteCourse = function(ref){
         console.log(ref);
 
         swal({
           title: '¿Estás seguro?',
-          text: 'La oferta ' + ref + ' no va a poder ser recuperada!',
+          text: 'El curso ' + ref + ' no va a poder ser recuperado!',
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Sí, bórrala!'
+          confirmButtonText: 'Sí, bórralo!'
         }).then(function () {
             //Set vars
-            var deleteUrl = restService.url + 'deleteOffer' + "?ref=";
+            var deleteUrl = restService.url + 'deleteCourse' + "?ref=";
 
             postService.deleteOffer(deleteUrl, ref)
             .then(function success(response) {
-                swal('OK', 'Oferta eliminada correctamente','success')
+                swal('OK', 'Curso eliminado correctamente','success')
                 $scope.get();
             }, function error(response) {
                 swal('Error!', 'An error ocurred :(', 'error');

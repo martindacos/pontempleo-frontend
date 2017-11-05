@@ -33,6 +33,10 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
                      controller: "modifyCourseCtrl",
                      templateUrl: "views/modifyCourse.html"
         })
+        .when("/newCourse", {
+             controller: "newCourseCtrl",
+             templateUrl: "views/newCourse.html"
+        })
         .when("/legal", {
               templateUrl: "views/legal.html"
         })

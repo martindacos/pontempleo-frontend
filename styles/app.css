@@ -136,3 +136,31 @@ footer {
 #description {
     resize: none;
 }
+
+td {
+    text-align:center;
+    vertical-align:middle;
+}
+
+#index {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    background-image: url("../img/fervenza.jpg");
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.index1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button1 {
+    font-size : 20px;
+}
