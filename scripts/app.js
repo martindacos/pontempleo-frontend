@@ -30,8 +30,8 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
              templateUrl: "views/modifyOffer.html"
         })
         .when("/modifyCourse", {
-                     controller: "modifyCourseCtrl",
-                     templateUrl: "views/modifyCourse.html"
+              controller: "modifyCourseCtrl",
+              templateUrl: "views/modifyCourse.html"
         })
         .when("/newCourse", {
              controller: "newCourseCtrl",
@@ -40,14 +40,30 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
         .when("/legal", {
               templateUrl: "views/legal.html"
         })
+        .when("/login", {
+              controller: "loginCtrl",
+              templateUrl: "views/login.html"
+        })
         .otherwise("/dashboard");
 
 
 }])
-    .run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
+    .run(['$rootScope', '$location', '$cookieStore', '$http', 'authService', function ($rootScope, $location, $cookieStore, $http, authService) {
 
-        //Init vars
-        $rootScope.showNav = true;
-        //console.log($rootScope.showNav);
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookieStore.get('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        }
 
+        $rootScope.$on('$routeChangeStart', function (event) {
+
+        if (!authService.isLoggedIn($location.path())) {
+            console.log('DENY');
+            console.log('Current route name: ' + $location.path());
+            $location.path('/login');
+         } else {
+            console.log('ALLOW');
+         }
+        });
     }]);

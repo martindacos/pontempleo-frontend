@@ -1,4 +1,4 @@
-angular.module("project").controller("indexCtrl", ["$scope", "$http", "$rootScope", "$location", 'restService', 'postService', function ($scope, $http, $rootScope, $location, restService, postService) {
+angular.module("project").controller("indexCtrl", ["$scope", "$http", "$rootScope", "$location", 'restService', 'postService', 'authService', function ($scope, $http, $rootScope, $location, restService, postService, authService) {
 
     $scope.route = function (route) {
         return route === $location.path();
@@ -8,4 +8,8 @@ angular.module("project").controller("indexCtrl", ["$scope", "$http", "$rootScop
         return viewLocation === $location.path();
     };
 
+    $scope.showNax = function () {
+        //console.log(authService.isLoggedIn("/nav"));
+        return authService.isLoggedIn("/nav");
+    }
 }]);

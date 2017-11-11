@@ -1,0 +1,21 @@
+ <nav class="navbar navbar-default navbar-fixed-top" ng-controller="adminIndexCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#adminNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/logo.png" style="width:250px;height:80px;"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: isActive('/modifyOffer')}"><a href="#/modifyOffer"> Modificar Ofertas </a></li>
+                    <li ng-class="{ active: isActive('/newOffer')}"><a href="#/newOffer"> Nueva Oferta </a>
+                    <li ng-class="{ active: isActive('/modifyCourse')}"><a href="#/modifyCourse"> Modificar Cursos </a></li>
+                    <li ng-class="{ active: isActive('/newCourse')}"><a href="#/newCourse"> Nuevo Curso </a>
+                    <li><a ng-click="close()"> Cerrar Sesión </a></li>
+                </ul>
+            </div>
+        </div>
+ </nav>
