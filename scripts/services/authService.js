@@ -54,7 +54,7 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
 
     service.isLoggedIn = function (route) {
         if (route == "/newOffer" || route == "/modifyOffer" || route == "/modifyCourse" || route == "/newCourse" || route == "/nav") {
-            if (user != null) {
+            if ($cookieStore.get('globals') != null) {
                 return true;
             } else {
                 return false;

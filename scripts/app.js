@@ -50,12 +50,6 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
 }])
     .run(['$rootScope', '$location', '$cookieStore', '$http', 'authService', function ($rootScope, $location, $cookieStore, $http, authService) {
 
-        // keep user logged in after page refresh
-        $rootScope.globals = $cookieStore.get('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
-        }
-
         $rootScope.$on('$routeChangeStart', function (event) {
 
         if (!authService.isLoggedIn($location.path())) {

@@ -9,7 +9,6 @@ angular.module("project").controller("indexCtrl", ["$scope", "$http", "$rootScop
     };
 
     $scope.showNax = function () {
-        //console.log(authService.isLoggedIn("/nav"));
         return authService.isLoggedIn("/nav");
     }
 }]);
