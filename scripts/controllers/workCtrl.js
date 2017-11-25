@@ -21,13 +21,31 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
     };
 
     $scope.setInscription = function(name, inscription){
-        console.log(inscription);
+        //console.log(inscription);
         var myEl = angular.element( document.querySelector( '#title' ) );
         myEl.html(name);
     };
 
     $scope.resetOffer = function(){
         document.getElementById('myOfferForm').reset();
+    };
+
+    $scope.submitOffer = function(){
+        var file = document.getElementById("cv").files[0];
+        if (file) {
+           console.log(file.name);
+        }
+        //Set vars
+        var uploadUrl = restService.url + 'offerEmail';
+
+        postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone)
+        .then(function success(response) {
+            document.getElementById('myOfferForm').reset();
+            swal('OK', 'Mensaje enviado correctamente','success')
+            $('#myModal').modal('hide');
+        }, function error(response) {
+            swal('Error!', 'An error ocurred :(', 'error');
+        });
     };
 }]);
 

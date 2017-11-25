@@ -1,41 +1,70 @@
 <div class="container-fluid">
-    <div class="panel-group equal">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" data-target="#presencial">Presencial</a></li>
+        <li><a data-toggle="tab" data-target="#teleformacion">Teleformación</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="presencial" class="tab-pane fade in active">
 
-        <!--No offers message-->
-        <h5 ng-if="courses.length < 1">
-            <br>
-            <br>
-            NO COURSES IN THE DB
-        </h5>
+            <!--No offers message-->
+            <h5 ng-if="courses.length < 1">
+                <br>
+                <br>
+                NO COURSES IN THE DB
+            </h5>
 
-        <!--Offer card-->
-        <div class="panel panel-default col-md-6" ng-repeat="course in courses track by $index">
-            <h3 class="panel-heading">{{course.name}}</h3>
+            <!--Offer card-->
+            <div class="panel panel-default col-md-6" ng-repeat="course in courses track by $index">
+                <h3 class="panel-heading">{{course.name}}</h3>
 
-            <div class="panel-body">
-                <div class="col-md-6">
-                    <img src={{course.img}} style="width:100%;height:100%;object-fit: contain">
-                </div>
-
-                <div class="col-md-6">
-
-                    <!--Offer data-->
-                    <div>
-                        <p><b> Zona: </b> {{course.zone}}</p>
-                        <p><b> Descripción: </b> {{course.description}}</p>
-                        <p ng-if="course.dateIni.length > 1"><b> Fecha Inicio: </b> {{course.dateIni}}</p>
-                        <p ng-if="course.dateFin.length > 1"><b> Fecha Fin: </b> {{course.dateFin}}</p>
-                        <p ng-if="course.date.length > 1"><b> Horario: </b> {{course.date}}</p>
-                        <p ng-if="course.direction.length > 1"><b> Dirección: </b> {{course.direction}}</p>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <img src={{course.img}} style="width:100%;height:100%;object-fit: contain">
                     </div>
 
-                    <div class="panel-footer center">
-                        <a ng-click="getContent(offer.name)" class="btn btn-primary">Solicitar</a>
+                    <div class="col-md-6">
+
+                        <!--Offer data-->
+                        <div>
+                            <p><b> Zona: </b> {{course.zone}}</p>
+                            <p><b> Descripción: </b> {{course.description}}</p>
+                            <p ng-if="course.dateIni.length > 1"><b> Fecha Inicio: </b> {{course.dateIni}}</p>
+                            <p ng-if="course.dateFin.length > 1"><b> Fecha Fin: </b> {{course.dateFin}}</p>
+                            <p ng-if="course.date.length > 1"><b> Horario: </b> {{course.date}}</p>
+                            <p ng-if="course.direction.length > 1"><b> Dirección: </b> {{course.direction}}</p>
+                        </div>
+
+                        <div class="panel-footer center">
+                            <a ng-click="setCourse(course.name)" class="btn btn-primary" data-toggle="modal" data-target="#modalCourse">Solicitar</a>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+        </div>
+
+        <div id="teleformacion" class="tab-pane fade">
+            <iframe src="http://www.plataformateleformacion.com/lcursos/cursos_elearning.php"
+                    width="100%" height="600px" frameborder="0" style="border:0"></iframe>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="modalCourse" class="modal fade" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="title" ng-bind-html="divHtmlVar"></h4>
+            </div>
+            <div class="modal-body">
+                Solicita información sobre la fecha de este curso poniéndote en contacto con nosotros en cursos@pontempleo.com o en el 986 58 12 80.
             </div>
         </div>
 
     </div>
-
 </div>

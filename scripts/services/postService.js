@@ -24,6 +24,31 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
 
     };
 
+    //Offer form
+    this.postContactOffer = function (uploadUrl, file, name, email, phone) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        //Append data
+        var fd = new FormData();
+        fd.append('file', file);
+        fd.append('name', name);
+        fd.append('email', email);
+        fd.append('phone', phone);
+
+        //Promise
+        return $http.post(uploadUrl, fd, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
     //New Offer
     this.postOffer = function (uploadUrl, nameOffer, zoneOffer, reqMinOffer, reqDesOffer, descriptionOffer) {
 

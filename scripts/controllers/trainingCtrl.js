@@ -11,9 +11,10 @@ angular.module("project").controller("trainingCtrl", ["$scope", "$http", "$locat
 
     $scope.get();
 
-    $scope.setCourse = function(course){
-        $scope.course = course;
+    $scope.setCourse = function(name){
+        //console.log(inscription);
+        var myEl = angular.element( document.querySelector( '#title' ) );
+        myEl.html(name);
     };
-
 }]);
 

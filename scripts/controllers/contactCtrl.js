@@ -8,6 +8,7 @@ $scope.submitContact = function(){
     postService.postData(uploadUrl, $scope.nameForm, $scope.email, $scope.phone, $scope.description)
     .then(function success(response) {
         document.getElementById('myForm').reset();
+        swal('OK', 'Mensaje enviado correctamente','success')
     }, function error(response) {
         swal('Error!', 'An error ocurred :(', 'error');
     });

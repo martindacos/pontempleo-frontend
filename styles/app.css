@@ -141,9 +141,9 @@ td {
     padding: 0px;
     margin: 0px;
     height: 100%;
-    min-height: 400px;
+    min-height: 816px;
     width: 100%;
-    background-image: url("../img/fervenza.jpg");
+    background-image: url("../img/trabajo.jpg");
 
     display: flex;
     align-items: center;
@@ -158,6 +158,8 @@ td {
 
 .button1 {
     font-size : 20px;
+    background: transparent;
+    border-color:  orange;
 }
 
 h3 {
