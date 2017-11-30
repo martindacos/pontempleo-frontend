@@ -49,7 +49,6 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$l
         $scope.fechaIniCourse = course.dateIni;
         $scope.fechaFinCourse = course.dateFin;
         $scope.directionCourse = course.direction;
-        $scope.imageCourse = course.img;
         $scope.test = course.active;
     };
 
@@ -59,7 +58,7 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$l
         console.log($scope.test);
 
         postService.modifyCourse(uploadUrl, $scope.nameCourse, $scope.zoneCourse, $scope.descriptionCourse, $scope.fechaIniCourse, $scope.fechaFinCourse, $scope.directionCourse
-        , $scope.dateCourse, $scope.test, $scope.imageCourse)
+        , $scope.dateCourse, $scope.test)
         .then(function success(response) {
              $('#editCourseModal').modal('hide');
             $scope.get();

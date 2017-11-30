@@ -33,7 +33,7 @@
                 <td>{{course.description}}</td>
                 <td>{{course.time}}</td>
                 <td>{{course.direction}}</td>
-                <td><img style="display:block;" width="200px" height="200px" src={{course.img}}></td>
+                <td><img style="display:block;" width="200px" height="200px" src="data:{{course.contentType}};base64, {{course.image}}"></td>
                 <td>{{course.dateIni}}</td>
                 <td>{{course.dateFin}}</td>
                 <td ng-if="course.active == true">Sí</td>
@@ -58,7 +58,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="nameCourse">Nombre</label>
+                    <label for="nameCourse">Nombre *</label>
                     <input type="text" ng-model="nameCourse" class="form-control" id="nameCourse" name="nameCourse"
                            required>
                 </div>
@@ -68,7 +68,7 @@
                            required>
                 </div>
                 <div class="form-group">
-                    <label for="descriptionCourse">Descripción</label>
+                    <label for="descriptionCourse">Descripción *</label>
                     <textarea class="form-control" ng-model="descriptionCourse" id="descriptionCourse" required></textarea>
                 </div>
                 <div class="form-group">
@@ -78,10 +78,6 @@
                 <div class="form-group">
                     <label for="directionCourse">Dirección</label>
                     <input type="text" ng-model="directionCourse" class="form-control" id="directionCourse">
-                </div>
-                <div class="form-group">
-                    <label for="imageCourse">Imagen</label>
-                    <input type="image" ng-src="{{imageCourse}}" class="form-control" id="imageCourse" width="200" height="200">
                 </div>
                 <div class="form-group">
                     <label for="fechaIniCourse">F. Inicio</label>

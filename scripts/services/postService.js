@@ -149,7 +149,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
     };
 
     //Modify Course
-        this.modifyCourse = function (uploadUrl, nameCourse, zoneCourse, descriptionCourse, fechaIniCourse, fechaFinCourse, directionCourse, horarioCourse, active, imageCourse) {
+        this.modifyCourse = function (uploadUrl, nameCourse, zoneCourse, descriptionCourse, fechaIniCourse, fechaFinCourse, directionCourse, horarioCourse, active) {
 
             //Set config
             var config = {
@@ -168,7 +168,6 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
             fd.append('directionCourse', directionCourse);
             fd.append('horarioCourse', horarioCourse);
             fd.append('active', active);
-            fd.append('imageCourse', imageCourse);
 
             //Promise
             return $http.post(uploadUrl, fd, config).then(function (response) {

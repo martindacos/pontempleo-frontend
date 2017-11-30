@@ -19,15 +19,15 @@
 
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <img src={{course.img}} style="width:100%;height:100%;object-fit: contain">
+                        <img src="data:{{course.contentType}};base64, {{course.image}}" style="width:100%;height:100%;object-fit: contain">
                     </div>
 
                     <div class="col-md-6">
 
                         <!--Offer data-->
                         <div>
-                            <p><b> Zona: </b> {{course.zone}}</p>
-                            <p><b> Descripción: </b> {{course.description}}</p>
+                            <p ng-if="course.zone.length > 1"><b> Zona: </b> {{course.zone}}</p>
+                            <p ng-if="course.description.length > 1"><b> Descripción: </b> {{course.description}}</p>
                             <p ng-if="course.dateIni.length > 1"><b> Fecha Inicio: </b> {{course.dateIni}}</p>
                             <p ng-if="course.dateFin.length > 1"><b> Fecha Fin: </b> {{course.dateFin}}</p>
                             <p ng-if="course.date.length > 1"><b> Horario: </b> {{course.date}}</p>
