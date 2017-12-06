@@ -1,0 +1,112 @@
+<!--offers-->
+<div class="container-fluid">
+
+    <div class="col-md-6">
+        <h3>Crear nuevo restaurante</h3>
+        <form ng-submit="newR()" id="newRestaurantForm" role="form" name="newRestaurantForm">
+            <div>
+                <div class="form-group">
+                    <label for="nameRestauran">Nombre *</label>
+                    <input type="text" ng-model="nameRestaurant" class="form-control" id="nameRestauran" placeholder=""
+                           required>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-default submit">
+                        Crear
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-12">
+        <h3>Todos los restaurantes</h3>
+
+        <!--No offers message-->
+        <h5 ng-if="res.length < 1">
+            <br>
+            <br>
+            NO HAY RESTAURANTES EN LA BASE DE DATOS
+        </h5>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre
+                <th>Id</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-class="{ success: r.active, danger: !r.active}" ng-repeat="r in res track by $index">
+                <td>{{r.name}}</td>
+                <td>{{r.id}}</td>
+                <td ng-if="r.active == true">Sí</td>
+                <td ng-if="r.active == false">No</td>
+                <td><span class="glyphicon glyphicon-remove" ng-click="deleteR(r.id)"></span>
+                    <span class="glyphicon glyphicon-edit" ng-click="editR(r)"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div ng-hide="myHide" class="ng-hide col-md-12">
+
+        <div class="col-md-6">
+
+            <h3>Alérgenos de {{id}}</h3>
+
+            <!--No offers message-->
+            <h5 ng-if="ale.length < 1">
+                <br>
+                <br>
+                NO HAY ALÉRGENOS PARA ESTE RESTAURANTE
+            </h5>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fichero</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="a in ale track by $index">
+                    <td>{{a.name}}</td>
+                    <td>{{a.filename}}</td>
+                    <td><span class="glyphicon glyphicon-remove" ng-click="deleteA(a.filename)"></span>
+                        <a href="http://localhost:8080/getAlergeno/{{id}}?filename={{a.filename}}" class="glyphicon glyphicon-eye-open" target="_blank"></a></td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <h3>Crear nuevo alérgeno</h3>
+
+            <form ng-submit="submitAler()" id="myForm" role="form" name="myForm">
+                <div>
+                    <div class="form-group">
+                        <label for="nameM">Nombre *</label>
+                        <input type="text" ng-model="nameM2" class="form-control" id="nameM" name="nameM" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="aleM">Alérgenos *</label>
+                        <input type="file" ng-model="aleM2" class="form-control" id="aleM" name="aleM" required>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-default submit">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

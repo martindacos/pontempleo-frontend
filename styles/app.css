@@ -137,6 +137,11 @@ td {
     vertical-align:middle;
 }
 
+th {
+    text-align:center;
+    vertical-align:middle;
+}
+
 #index {
     padding: 0px;
     margin: 0px;

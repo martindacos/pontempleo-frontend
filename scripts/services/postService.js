@@ -24,6 +24,74 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
 
     };
 
+    //Add alérgeno
+    this.postAle = function (uploadUrl, id, name, file) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        //Append data
+        var fd = new FormData();
+        fd.append('id', id);
+        fd.append('name', name);
+        fd.append('file', file);
+
+        //Promise
+        return $http.post(uploadUrl, fd, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
+    //Delete alérgeno
+    this.deleteA = function (uploadUrl, id, filename) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        //Append data
+        var fd = new FormData();
+        fd.append('filename', filename);
+
+        //Promise
+        return $http.post(uploadUrl + id, fd, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
+    //New restaurant
+    this.postRestaurant = function (uploadUrl, name) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        //Append data
+        var fd = new FormData();
+        fd.append('name', name);
+
+        //Promise
+        return $http.post(uploadUrl, fd, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
     //Offer form
     this.postContactOffer = function (uploadUrl, file, name, email, phone) {
 
@@ -102,7 +170,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
 
         };
 
-    //Delete Offer
+    //Delete Offer and Restaurant
     this.deleteOffer = function (uploadUrl, ref) {
 
         //Set config
