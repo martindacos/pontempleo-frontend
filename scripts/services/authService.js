@@ -53,12 +53,30 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
     };
 
     service.isLoggedIn = function (route) {
-        if (route == "/newOffer" || route == "/modifyOffer" || route == "/modifyCourse" || route == "/newCourse" || route == "/nav") {
+        if (route.includes("/newOffer") || route.includes("/modifyOffer") || route.includes("/modifyCourse") || route.includes("/newCourse")
+         || route.includes("/modifyAlergenos") ){
             if ($cookieStore.get('globals') != null) {
                 return true;
             } else {
                 return false;
             }
+        } else {
+            return true;
+        }
+    };
+
+    service.showAdminNav = function (route) {
+         if ($cookieStore.get('globals') != null) {
+              return true;
+         } else {
+              return false;
+         }
+    };
+
+    service.isRestaurant = function (route) {
+        console.log(route);
+        if (route.includes("/alergenos/")) {
+            return false;
         } else {
             return true;
         }

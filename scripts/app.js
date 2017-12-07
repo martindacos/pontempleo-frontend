@@ -37,7 +37,7 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
              controller: "newCourseCtrl",
              templateUrl: "views/newCourse.html"
         })
-        .when("/newAlergeno", {
+        .when("/modifyAlergenos", {
               controller: "newAlergenoCtrl",
               templateUrl: "views/newAlergeno.html"
         })
@@ -47,6 +47,10 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
         .when("/login", {
               controller: "loginCtrl",
               templateUrl: "views/login.html"
+        })
+        .when("/alergenos/:id", {
+              controller: "alergenosCtrl",
+              templateUrl: "views/alergenos.html"
         })
         .otherwise("/dashboard");
 

@@ -1,0 +1,42 @@
+<!--offers-->
+<div class="container-fluid">
+    <div class="col-md-12">
+
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+            <h3>Restaurante {{r.name}}</h3>
+
+            <!--No offers message-->
+            <h5 ng-if="ale.length < 1">
+                <br>
+                <br>
+                NO HAY ALÉRGENOS PARA ESTE RESTAURANTE
+            </h5>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Ver</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="a in ale track by $index">
+                    <td>{{a.name}}</td>
+                    <td>
+                        <a href="http://localhost:8080/getAlergeno/{{aleID}}?filename={{a.filename}}" class="glyphicon glyphicon-eye-open" target="_blank"></a></td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>

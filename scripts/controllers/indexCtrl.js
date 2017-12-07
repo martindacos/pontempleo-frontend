@@ -9,6 +9,10 @@ angular.module("project").controller("indexCtrl", ["$scope", "$http", "$rootScop
     };
 
     $scope.showNax = function () {
-        return authService.isLoggedIn("/nav");
+        return authService.showAdminNav($location.path());
+    }
+
+    $scope.showRestaurant = function () {
+        return authService.isRestaurant($location.path());
     }
 }]);

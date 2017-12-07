@@ -84,7 +84,7 @@ $scope.submitAler = function(){
 };
 
 $scope.alergenos = function () {
-     restService.get(restService.url, "allAlergenos?id=" + $scope.id, "")
+     restService.get(restService.url, "alergenos/" + $scope.id, "")
             .then(function (response) {
                 $scope.ale = response.data;
                 console.log($scope.ale);
