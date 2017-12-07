@@ -1,9 +1,10 @@
-angular.module("project").controller("modifyOfferCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
+angular.module("project").controller("modifyOfferCtrl", ["$scope", "$http", '$cookieStore', "$location", 'restService', 'postService', function ($scope, $http, $cookieStore, $location, restService, postService) {
 
     $scope.loading = false;
     $scope.source = "DB";
     $scope.get = function () {
-        restService.get(restService.url, "allOffers/", '')
+        var id = $cookieStore.get('globals').currentUser.authdata;
+        restService.get(restService.url, "allOffers?auth=" + id, '')
             .then(function (response) {
                 $scope.offers = response.data;
             }, function error(response) {
@@ -26,10 +27,11 @@ angular.module("project").controller("modifyOfferCtrl", ["$scope", "$http", "$lo
           cancelButtonColor: '#d33',
           confirmButtonText: 'Sí, bórrala!'
         }).then(function () {
+            var id = $cookieStore.get('globals').currentUser.authdata;
             //Set vars
-            var deleteUrl = restService.url + 'deleteOffer' + "?ref=";
+            var deleteUrl = restService.url + "deleteOffer/" + ref + "?auth=";
 
-            postService.deleteOffer(deleteUrl, ref)
+            postService.deleteOffer(deleteUrl, id)
             .then(function success(response) {
                 swal('OK', 'Oferta eliminada correctamente','success')
                 $scope.get();
@@ -54,14 +56,14 @@ angular.module("project").controller("modifyOfferCtrl", ["$scope", "$http", "$lo
 
     $scope.modifyOffer = function(){
         //Set vars
-        var uploadUrl = restService.url + 'modifyOffer';
+        var id = $cookieStore.get('globals').currentUser.authdata;
+        var uploadUrl = restService.url + 'modifyOffer?auth=' + id;
         console.log($scope.test);
 
         postService.modifyOffer(uploadUrl, $scope.nameOffer, $scope.refOffer, $scope.zoneOffer, $scope.reqMinOffer, $scope.reqDesOffer, $scope.descriptionOffer
         , $scope.dateOffer, $scope.test)
         .then(function success(response) {
              $('#editOfferModal').modal('hide');
-            //$('#editOfferModal').modal('close');
             $scope.get();
             swal('OK', 'Oferta modificada correctamente','success')
         }, function error(response) {

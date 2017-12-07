@@ -1,9 +1,10 @@
-angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
+angular.module("project").controller("modifyCourseCtrl", ["$scope", '$cookieStore', "$http", "$location", 'restService', 'postService', function ($scope, $cookieStore, $http, $location, restService, postService) {
 
     $scope.loading = false;
     $scope.source = "DB";
     $scope.get = function () {
-        restService.get(restService.url, "allCourses/", '')
+        var id = $cookieStore.get('globals').currentUser.authdata;
+        restService.get(restService.url, "allCourses?auth=" + id, '')
             .then(function (response) {
                 $scope.courses = response.data;
             }, function error(response) {
@@ -26,10 +27,11 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$l
           cancelButtonColor: '#d33',
           confirmButtonText: 'Sí, bórralo!'
         }).then(function () {
+            var id = $cookieStore.get('globals').currentUser.authdata;
             //Set vars
-            var deleteUrl = restService.url + 'deleteCourse' + "?ref=";
+            var deleteUrl = restService.url + 'deleteCourse/' + ref + "?auth=";
 
-            postService.deleteOffer(deleteUrl, ref)
+            postService.deleteOffer(deleteUrl, id)
             .then(function success(response) {
                 swal('OK', 'Curso eliminado correctamente','success')
                 $scope.get();
@@ -54,7 +56,8 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", "$http", "$l
 
     $scope.modifyCourse = function(){
         //Set vars
-        var uploadUrl = restService.url + 'modifyCourse';
+        var id = $cookieStore.get('globals').currentUser.authdata;
+        var uploadUrl = restService.url + 'modifyCourse?auth=' + id;
         console.log($scope.test);
 
         postService.modifyCourse(uploadUrl, $scope.nameCourse, $scope.zoneCourse, $scope.descriptionCourse, $scope.fechaIniCourse, $scope.fechaFinCourse, $scope.directionCourse

@@ -1,9 +1,10 @@
-angular.module("project").controller("newAlergenoCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
+angular.module("project").controller("newAlergenoCtrl", ["$scope", '$cookieStore', "$http", "$location", 'restService', 'postService', function ($scope, $cookieStore, $http, $location, restService, postService) {
 
 $scope.myHide = true;
 
     $scope.get = function () {
-        restService.get(restService.url, "allRestaurants/", '')
+        var auth = $cookieStore.get('globals').currentUser.authdata;
+        restService.get(restService.url, "allRestaurants?auth=" + auth, '')
             .then(function (response) {
                 $scope.res = response.data;
             }, function error(response) {
@@ -16,7 +17,8 @@ $scope.myHide = true;
 
 $scope.newR = function(){
     //Set vars
-    var uploadUrl = restService.url + 'newRestaurant';
+    var id = $cookieStore.get('globals').currentUser.authdata;
+    var uploadUrl = restService.url + 'newRestaurant?auth=' + id;
 
     console.log($scope.nameRestaurant);
 
@@ -43,8 +45,9 @@ $scope.deleteR = function(id){
           confirmButtonText: 'Sí, bórralo!'
         }).then(function () {
             //Set vars
-            var deleteUrl = restService.url + 'deleteRestaurant' + "?id=";
-            postService.deleteOffer(deleteUrl, id)
+            var auth = $cookieStore.get('globals').currentUser.authdata;
+            var deleteUrl = restService.url + 'deleteRestaurant/' + id + "?auth=";
+            postService.deleteOffer(deleteUrl, auth)
 
             .then(function success(response) {
                 swal('OK', 'Restaurante eliminado correctamente','success')
@@ -71,7 +74,8 @@ $scope.submitAler = function(){
     }
 
     //Set vars
-    var uploadUrl = restService.url + 'newAle';
+    var auth = $cookieStore.get('globals').currentUser.authdata;
+    var uploadUrl = restService.url + 'newAle?auth=' + auth;
 
     postService.postAle(uploadUrl, $scope.id, $scope.nameM2, file)
     .then(function success(response) {
@@ -107,8 +111,9 @@ $scope.deleteA = function(filename){
           confirmButtonText: 'Sí, bórralo!'
         }).then(function () {
             //Set vars
-            var deleteUrl = restService.url + 'deleteAlergeno' + "?id=";
-            postService.deleteA(deleteUrl, $scope.id, filename)
+            var auth = $cookieStore.get('globals').currentUser.authdata;
+            var deleteUrl = restService.url + 'deleteAlergeno/' + $scope.id + "?auth=";
+            postService.deleteA(deleteUrl, auth, filename)
 
             .then(function success(response) {
                 swal('OK', 'Archivo eliminado correctamente','success')

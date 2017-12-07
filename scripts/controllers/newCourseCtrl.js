@@ -1,9 +1,10 @@
-angular.module("project").controller("newCourseCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
+angular.module("project").controller("newCourseCtrl", ["$scope", '$cookieStore', "$http", "$location", 'restService', 'postService', function ($scope, $cookieStore, $http, $location, restService, postService) {
 
 
 $scope.newCourse = function(){
     //Set vars
-    var uploadUrl = restService.url + 'newCourse';
+    var id = $cookieStore.get('globals').currentUser.authdata;
+    var uploadUrl = restService.url + 'newCourse?auth=' + id;
 
     postService.postCourse(uploadUrl, $scope.nameCourse, $scope.zoneCourse, $scope.descriptionCourse, $scope.timeCourse, $scope.fechaIniCourse, $scope.fechaFinCourse
     , $scope.directionCourse, $scope.data.file)

@@ -4,6 +4,8 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
 
     service.Login = function (username, password, callback) {
 
+        var authpass = Base64.encode(password);
+
         //Set config
         var config = {
             headers: {
@@ -15,11 +17,12 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
         //Append data
         var fd = new FormData();
         fd.append('user', username);
-        fd.append('pass', password);
+        fd.append('pass', authpass);
 
         //Promise
-        return $http.post(restService.url + '/login', fd, config).then(function (response) {
-            callback(response.status);
+        return $http.post(restService.url + 'login', fd, config).then(function (response) {
+            console.log(response);
+            return(response);
         });
 
     };
@@ -40,7 +43,7 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
             }
         };
         user = username;
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
         console.log($rootScope.globals);
         $cookieStore.put('globals', $rootScope.globals);
     };
@@ -56,6 +59,7 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
         if (route.includes("/newOffer") || route.includes("/modifyOffer") || route.includes("/modifyCourse") || route.includes("/newCourse")
          || route.includes("/modifyAlergenos") ){
             if ($cookieStore.get('globals') != null) {
+                console.log($cookieStore.get('globals'));
                 return true;
             } else {
                 return false;
@@ -167,6 +171,4 @@ angular.module("project").factory('authService', ['Base64', '$http', '$cookieSto
                 return output;
             }
         };
-
-        /* jshint ignore:end */
     });
