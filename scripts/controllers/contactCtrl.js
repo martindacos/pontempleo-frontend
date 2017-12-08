@@ -5,6 +5,9 @@ $scope.submitContact = function(){
     //Set vars
     var uploadUrl = restService.url + 'contactEmail' + "?name=";
 
+    swal('Procesando su solicitud ...', '','info')
+    swal.showLoading();
+
     postService.postData(uploadUrl, $scope.nameForm, $scope.email, $scope.phone, $scope.description)
     .then(function success(response) {
         document.getElementById('myForm').reset();

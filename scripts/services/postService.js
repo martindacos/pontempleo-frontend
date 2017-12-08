@@ -105,7 +105,9 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
 
         //Append data
         var fd = new FormData();
-        fd.append('file', file);
+        if (file != null) {
+            fd.append('file', file);
+        }
         fd.append('name', name);
         fd.append('email', email);
         fd.append('phone', phone);

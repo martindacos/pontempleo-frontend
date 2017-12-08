@@ -32,19 +32,25 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
 
     $scope.submitOffer = function(){
         var file = document.getElementById("cv").files[0];
-        if (file) {
+        if (file != null) {
            console.log(file.name);
+           //Set vars
+           var uploadUrl = restService.url + 'offerEmail';
+        } else {
+            //Set vars
+            var uploadUrl = restService.url + 'offerEmailSimple';
         }
-        //Set vars
-        var uploadUrl = restService.url + 'offerEmail';
+
+        swal('Procesando su solicitud ...', '','info')
+        swal.showLoading();
 
         postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone)
         .then(function success(response) {
-            document.getElementById('myOfferForm').reset();
-            swal('OK', 'Mensaje enviado correctamente','success')
-            $('#myModal').modal('hide');
-        }, function error(response) {
-            swal('Error!', 'An error ocurred :(', 'error');
+             document.getElementById('myOfferForm').reset();
+             swal('OK', 'Mensaje enviado correctamente','success')
+             $('#myModal').modal('hide');
+         }, function error(response) {
+             swal('Error!', 'An error ocurred :(', 'error');
         });
     };
 }]);
