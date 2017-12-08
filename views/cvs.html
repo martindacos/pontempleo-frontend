@@ -7,27 +7,30 @@
         </div>
         <div class="col-md-4">
 
-            <h3>Restaurante {{r.name}}</h3>
+            <h3>CVs</h3>
 
             <!--No offers message-->
-            <h5 ng-if="ale.length < 1">
+            <h5 ng-if="cvs.length < 1">
                 <br>
                 <br>
-                NO HAY ALÉRGENOS PARA ESTE RESTAURANTE
+                NO SE ENCONTRARON CV's
             </h5>
 
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Ver</th>
+                    <th>Fichero</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="a in ale track by $index">
-                    <td>{{a.name}}</td>
+                <tr ng-repeat="a in cvs track by $index">
                     <td>
-                        <a href="{{url}}getAlergeno/{{aleID}}?filename={{a.filename}}" class="glyphicon glyphicon-eye-open" target="_blank"></a>
+                        <span>{{a}}</span>
+                    </td>
+                    <td>
+                        <a href="{{url}}getCV?auth={{auth}}&filename={{a}}" class="glyphicon glyphicon-eye-open" target="_blank"></a>
+                        <span class="glyphicon glyphicon-remove" ng-click="deleteCV(a)"></span>
                     </td>
                 </tr>
                 </tbody>

@@ -52,6 +52,10 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
               controller: "alergenosCtrl",
               templateUrl: "views/alergenos.html"
         })
+        .when("/cvs", {
+              controller: "cvsCtrl",
+              templateUrl: "views/cvs.html"
+        })
         .otherwise("/dashboard");
 
 

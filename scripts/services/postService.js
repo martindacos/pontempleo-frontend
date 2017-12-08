@@ -190,6 +190,24 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
 
     };
 
+    //Delete CV
+    this.deleteCV = function (uploadUrl) {
+
+        //Set config
+        var config = {
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        };
+
+        //Promise
+        return $http.post(uploadUrl, config).then(function (response) {
+            return (response);
+        });
+
+    };
+
     //Modify Offer
     this.modifyOffer = function (uploadUrl, nameOffer, refOffer, zoneOffer, reqMinOffer, reqDesOffer, descriptionOffer, dateOffer, active) {
 

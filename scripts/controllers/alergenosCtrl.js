@@ -1,5 +1,7 @@
 angular.module("project").controller("alergenosCtrl", ["$scope", "$route", "$http", "$location", 'restService', 'postService', function ($scope, $route, $http, $location, restService, postService) {
 
+$scope.url = restService.url;
+
 $scope.alergenos = function () {
      $scope.aleID = $route.current.params.id;
 
