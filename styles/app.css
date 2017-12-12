@@ -20,6 +20,25 @@ nav {
   min-height: 100px;
 }
 
+.logo {
+  width:445px;
+  height:83px;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width:300px;
+    height:56px;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .logo {
+    width:225px;
+    height:41px;
+  }
+}
+
 .nav >li >a {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -102,13 +121,16 @@ footer {
 
 /* Mobile version */
 .navbar-default .navbar-toggle {
+    /* Borde cuadrado coalesce */
     border-color: #DDD;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
+    /* Fondo cuadrado coalesce */
     background-color: #DDD;
 }
 .navbar-default .navbar-toggle .icon-bar {
+    /* Rayitas cuadrado coalesce */
     background-color: #CCC;
 }
 @media (max-width: 767px) {
@@ -123,7 +145,8 @@ footer {
 
 @media only screen and (max-width: 768px) {
     .navbar-default .navbar-collapse {
-    background-color: black;
+    /* Fondo barra navegación coalesce */
+    background-color: #001174;
     border-color: #FFA500;
      }
  }
