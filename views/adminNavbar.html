@@ -10,11 +10,24 @@
             </div>
             <div class="collapse navbar-collapse" id="adminNavbar">
                 <ul class="nav navbar-nav">
-                    <li ng-class="{ active: isActive('/modifyOffer')}"><a href="#/modifyOffer"> Modificar Ofertas </a></li>
-                    <li ng-class="{ active: isActive('/newOffer')}"><a href="#/newOffer"> Nueva Oferta </a>
-                    <li ng-class="{ active: isActive('/modifyCourse')}"><a href="#/modifyCourse"> Modificar Cursos </a></li>
-                    <li ng-class="{ active: isActive('/newCourse')}"><a href="#/newCourse"> Nuevo Curso </a>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Ofertas
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{ active: isActive('/newOffer')}"><a href="#/newOffer"> Nueva Oferta </a>
+                            <li ng-class="{ active: isActive('/modifyOffer')}"><a href="#/modifyOffer"> Modificar Ofertas </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Cursos
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{ active: isActive('/modifyCourse')}"><a href="#/modifyCourse"> Modificar Cursos </a></li>
+                            <li ng-class="{ active: isActive('/newCourse')}"><a href="#/newCourse"> Nuevo Curso </a>
+                        </ul>
+                    </li>
                     <li ng-class="{ active: isActive('/modifyAlergenos')}"><a href="#/modifyAlergenos"> Alérgenos </a>
+                    <li ng-class="{ active: isActive('/cvs')}"><a href="#/cvs"> CV </a>
                     <li><a ng-click="close()"> Cerrar Sesión </a></li>
                 </ul>
             </div>
