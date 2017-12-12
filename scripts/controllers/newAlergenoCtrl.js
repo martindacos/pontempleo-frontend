@@ -1,5 +1,7 @@
 angular.module("project").controller("newAlergenoCtrl", ["$scope", '$cookieStore', "$http", "$location", 'restService', 'postService', function ($scope, $cookieStore, $http, $location, restService, postService) {
 
+$scope.url = restService.url;
+
 $scope.myHide = true;
 
     $scope.get = function () {
