@@ -13,4 +13,7 @@ angular.module("project").controller("adminIndexCtrl", ["$scope", "$http", "$roo
         $location.path("login");
     };
 
+    $scope.resetCollapseNav = function(){
+        $('.navbar-collapse').collapse('hide');
+    };
 }]);

@@ -1,9 +1,13 @@
 angular.module("project").controller("trainingCtrl", ["$scope", "$http", "$location", 'restService', 'postService', function ($scope, $http, $location, restService, postService) {
 
     $scope.get = function () {
+        swal('Cargando ...', '','')
+        swal.showLoading();
+
         restService.get(restService.url, "courses/", '')
             .then(function (response) {
                 $scope.courses = response.data;
+                swal.close();
             }, function error(response) {
                 $scope.courses = [];
             });

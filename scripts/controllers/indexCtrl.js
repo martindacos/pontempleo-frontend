@@ -16,8 +16,6 @@ angular.module("project").controller("indexCtrl", ["$scope", "$http", "$rootScop
         return authService.isRestaurant($location.path());
     }
 
-    console.log(screen.width);
-
     $('.navbar-nav>li>a').on('click', function(){
         $('.navbar-collapse').collapse('hide');
     });

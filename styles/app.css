@@ -168,8 +168,9 @@ th {
 #index {
     padding: 0px;
     margin: 0px;
-    min-height: 816px;
-    background-image: url("../img/trabajo.jpg");
+    /*min-height: 816px;*/
+    min-height: 544px;
+    background-image: url("../img/trabajo2.jpg");
     background-size:     cover;
     background-repeat:   no-repeat;
 

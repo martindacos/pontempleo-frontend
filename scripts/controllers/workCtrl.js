@@ -5,9 +5,13 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
     $scope.loading = false;
     $scope.source = "DB";
     $scope.get = function () {
+        swal('Cargando ...', '','')
+        swal.showLoading();
+
         restService.get(restService.url, "offers/", '')
             .then(function (response) {
                 $scope.offers = response.data;
+                swal.close();
             }, function error(response) {
                 $scope.offers = [];
                 swal('Error!', 'An error ocurred :(', 'error');
@@ -21,7 +25,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
     };
 
     $scope.setInscription = function(name, inscription){
-        //console.log(inscription);
+        $scope.offerContactName = name;
         var myEl = angular.element( document.querySelector( '#title' ) );
         myEl.html(name);
     };
@@ -44,11 +48,13 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
         swal('Procesando su solicitud ...', '','info')
         swal.showLoading();
 
-        postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone)
+        postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone, $scope.message, $scope.offerContactName)
         .then(function success(response) {
              document.getElementById('myOfferForm').reset();
              swal('OK', 'Mensaje enviado correctamente','success')
              $('#myModal').modal('hide');
+             $scope.offerContactName = "";
+             $scope.message = "";
          }, function error(response) {
              swal('Error!', 'An error ocurred :(', 'error');
         });
