@@ -28,6 +28,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
         $scope.offerContactName = name;
         var myEl = angular.element( document.querySelector( '#title' ) );
         myEl.html(name);
+        $scope.inscription = inscription;
     };
 
     $scope.resetOffer = function(){
@@ -37,7 +38,13 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
     $scope.submitOffer = function(){
         var file = document.getElementById("cv").files[0];
         if (file != null) {
-           console.log(file.name);
+           var fileName = file.name;
+           console.log(fileName);
+           var ext = fileName.substr(fileName.lastIndexOf('.')+1);
+           if (ext != "pdf") {
+                swal('Error!', 'El archivo no tiene la extensión correcta', 'error');
+                return;
+           }
            //Set vars
            var uploadUrl = restService.url + 'offerEmail';
         } else {
@@ -48,7 +55,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
         swal('Procesando su solicitud ...', '','info')
         swal.showLoading();
 
-        postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone, $scope.message, $scope.offerContactName)
+        postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone, $scope.message, $scope.offerContactName, $scope.inscription)
         .then(function success(response) {
              document.getElementById('myOfferForm').reset();
              swal('OK', 'Mensaje enviado correctamente','success')

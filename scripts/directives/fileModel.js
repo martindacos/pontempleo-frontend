@@ -1,15 +1,17 @@
-angular.module("project").directive('fileModel', ['$parse', function($parse){
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs){
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
+angular.module('project').directive('validfile', function validFile() {
 
-            element.bind('change', function(){
-                scope.$apply(function(){
-                    modelSetter(scope, element[0].files[0]);
-                })
-            })
+    var validFormats = ['pdf'];
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            ctrl.$validators.validFile = function() {
+                elem.on('change', function () {
+                   var value = elem.val(),
+                       ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
+
+                   return validFormats.indexOf(ext) !== -1;
+                });
+           };
         }
-    }
-}]);
+    };
+});

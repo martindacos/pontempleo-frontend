@@ -73,21 +73,13 @@ footer {
     background-color: #FFA500;
     border-color: #FFA500;
 }
-/* Title */
-.navbar-default .navbar-brand {
-    color: #ecf0f1;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #5ffe6d1;
-}
 /* Link */
 .navbar-default .navbar-nav > li > a {
     color: #ffe6d1;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #ffe6d1;
+    color: #001174;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -146,7 +138,7 @@ footer {
 @media only screen and (max-width: 768px) {
     .navbar-default .navbar-collapse {
     /* Fondo barra navegación coalesce */
-    background-color: #001174;
+    background-color: #f58d18;
     border-color: #FFA500;
      }
  }
@@ -211,4 +203,35 @@ h4 {
 
 .footer {
     display: inline;
+}
+
+.logo-small {
+      color: #f4511e;
+      font-size: 50px;
+  }
+
+.logo1 {
+    color: #f4511e;
+    font-size: 200px;
+    margin-top: 70px;
+}
+
+.center {
+    text-align: center;
+}
+
+.services {
+    margin-top: 50px;
+}
+
+.about {
+    margin-left: 70px;
+}
+
+.foot {
+    margin-top: 20px;
+}
+
+.table-responsive {
+    margin-top: 20px;
 }

@@ -93,7 +93,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
     };
 
     //Offer form
-    this.postContactOffer = function (uploadUrl, file, name, email, phone, message, offer) {
+    this.postContactOffer = function (uploadUrl, file, name, email, phone, message, offer, ref) {
 
         //Set config
         var config = {
@@ -113,6 +113,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
         fd.append('phone', phone);
         fd.append('message', message);
         fd.append('offer', offer);
+        fd.append('ref', ref);
 
         //Promise
         return $http.post(uploadUrl, fd, config).then(function (response) {

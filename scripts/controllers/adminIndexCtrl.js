@@ -1,4 +1,4 @@
-angular.module("project").controller("adminIndexCtrl", ["$scope", "$http", "$rootScope", "$location", 'restService', 'postService', 'authService', function ($scope, $http, $rootScope, $location, restService, postService, authService) {
+angular.module("project").controller("adminIndexCtrl", ["$scope",'$route', "$http", "$rootScope", "$location", 'restService', 'postService', 'authService', function ($scope,$route, $http, $rootScope, $location, restService, postService, authService) {
 
     $scope.route = function (route) {
         return route === $location.path();
@@ -9,8 +9,18 @@ angular.module("project").controller("adminIndexCtrl", ["$scope", "$http", "$roo
     };
 
     $scope.close = function (viewLocation) {
-        authService.ClearCredentials();
-        $location.path("login");
+        swal({
+              title: '¿Estás seguro?',
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Cerrar Sesión'
+            }).then(function () {
+                authService.ClearCredentials();
+                $location.path("login");
+                $route.reload();
+            })
     };
 
     $scope.resetCollapseNav = function(){

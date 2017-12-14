@@ -72,7 +72,13 @@ $scope.submitAler = function(){
     console.log($scope.id);
     var file = document.getElementById("aleM").files[0];
     if (file) {
-       console.log(file.name);
+       var fileName = file.name;
+       console.log(fileName);
+       var ext = fileName.substr(fileName.lastIndexOf('.')+1);
+       if (ext != "pdf") {
+          swal('Error!', 'El archivo no tiene la extensión correcta', 'error');
+          return;
+       }
     }
 
     //Set vars
