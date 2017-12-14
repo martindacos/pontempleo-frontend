@@ -44,6 +44,9 @@ angular.module("project").config(["$routeProvider", function ($routeProvider) {
         .when("/legal", {
               templateUrl: "views/legal.html"
         })
+        .when("/privacidad", {
+              templateUrl: "views/privacidad.html"
+        })
         .when("/login", {
               controller: "loginCtrl",
               templateUrl: "views/login.html"
