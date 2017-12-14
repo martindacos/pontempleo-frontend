@@ -9,7 +9,7 @@ angular.module("project").service("restService", ["$http", function($http){
     };
 
     //Localhost
-    this.url = 'http://localhost:8080/'
+    //this.url = 'http://localhost:8080/'
     //Web IP
-    //this.url = 'http://149.202.56.49:8080/'
+    this.url = 'http://149.202.56.49:8080/'
 }]);
