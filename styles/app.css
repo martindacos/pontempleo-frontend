@@ -235,3 +235,19 @@ h4 {
 .table-responsive {
     margin-top: 20px;
 }
+
+.nav-tabs {
+    float: none;
+    display: inline-block;
+}
+
+.centered {
+   text-align: center;
+   font-size: 0;
+}
+.centered > div {
+   float: none;
+   display: inline-block;
+   text-align: left;
+   font-size: 13px;
+}
