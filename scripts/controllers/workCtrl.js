@@ -45,6 +45,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
                 swal('Error!', 'El archivo no tiene la extensión correcta', 'error');
                 return;
            }
+           var newFile = new File([file], $scope.inscription + "_.pdf", {type: 'application/pdf'});
            //Set vars
            var uploadUrl = restService.url + 'offerEmail';
         } else {
@@ -55,7 +56,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
         swal('Procesando su solicitud ...', '','info')
         swal.showLoading();
 
-        postService.postContactOffer(uploadUrl, file, $scope.nameForm, $scope.email, $scope.phone, $scope.message, $scope.offerContactName, $scope.inscription)
+        postService.postContactOffer(uploadUrl, newFile, $scope.nameForm, $scope.email, $scope.phone, $scope.message, $scope.offerContactName, $scope.inscription)
         .then(function success(response) {
              document.getElementById('myOfferForm').reset();
              swal('OK', 'Mensaje enviado correctamente','success')
