@@ -58,7 +58,6 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", '$cookieStor
         //Set vars
         var id = $cookieStore.get('globals').currentUser.authdata;
         var uploadUrl = restService.url + 'modifyCourse?auth=' + id;
-        console.log($scope.test);
 
         postService.modifyCourse(uploadUrl, $scope.nameCourse, $scope.zoneCourse, $scope.descriptionCourse, $scope.fechaIniCourse, $scope.fechaFinCourse, $scope.directionCourse
         , $scope.dateCourse, $scope.test)
