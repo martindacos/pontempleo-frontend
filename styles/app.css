@@ -53,6 +53,30 @@ nav {
     overflow: auto;
 }
 
+@media screen and (min-width: 990px) {
+  .panelC {
+      height:500px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .panelC {
+      height:450px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .panelT {
+      height:430px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .panelT {
+      height:400px;
+  }
+}
+
 .equal {
   display: flex;
   display: -webkit-flex;
