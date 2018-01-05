@@ -52,6 +52,7 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", '$cookieStor
         $scope.fechaFinCourse = course.dateFin;
         $scope.directionCourse = course.direction;
         $scope.test = course.active;
+        $scope.refC = course.ref;
     };
 
     $scope.modifyCourse = function(){
@@ -60,7 +61,7 @@ angular.module("project").controller("modifyCourseCtrl", ["$scope", '$cookieStor
         var uploadUrl = restService.url + 'modifyCourse?auth=' + id;
 
         postService.modifyCourse(uploadUrl, $scope.nameCourse, $scope.zoneCourse, $scope.descriptionCourse, $scope.fechaIniCourse, $scope.fechaFinCourse, $scope.directionCourse
-        , $scope.dateCourse, $scope.test)
+        , $scope.dateCourse, $scope.test, $scope.refC)
         .then(function success(response) {
              $('#editCourseModal').modal('hide');
             $scope.get();
