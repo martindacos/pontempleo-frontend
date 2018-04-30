@@ -205,7 +205,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
         };
 
         //Promise
-        return $http.post(uploadUrl, config).then(function (response) {
+        return $http.delete(uploadUrl, config).then(function (response) {
             return (response);
         });
 

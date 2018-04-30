@@ -32,11 +32,36 @@ $scope.cvsF();
         }).then(function () {
             var id = $cookieStore.get('globals').currentUser.authdata;
             //Set vars
-            var deleteUrl = restService.url + "deleteCV?auth=" + id + "&filename=" + ref;
+            var deleteUrl = restService.url + "cvs/" + ref + "?auth=" + id;
 
             postService.deleteCV(deleteUrl)
             .then(function success(response) {
                 swal('OK', 'CV eliminado correctamente','success')
+                $scope.cvsF();
+            }, function error(response) {
+                swal('Error!', 'An error ocurred :(', 'error');
+            });
+        })
+    };
+
+    $scope.deleteCVs = function(){
+
+        swal({
+          title: '¿Estás seguro?',
+          text: 'El CVs no va a poder ser recuperado!',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí, bórralos!'
+        }).then(function () {
+            var id = $cookieStore.get('globals').currentUser.authdata;
+            //Set vars
+            var deleteUrl = restService.url + "cvs/?auth=" + id;
+
+            postService.deleteCV(deleteUrl)
+            .then(function success(response) {
+                swal('OK', 'CVs eliminados correctamente','success')
                 $scope.cvsF();
             }, function error(response) {
                 swal('Error!', 'An error ocurred :(', 'error');

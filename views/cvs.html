@@ -21,6 +21,7 @@
                 <tr>
                     <th>Fichero</th>
                     <th>Acciones</th>
+                    <th><a ng-click="deleteCVs()" class="btn btn-danger" data-toggle="modal" data-target="#modalCourse">Eliminar Todo</a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,7 +30,7 @@
                         <span>{{a}}</span>
                     </td>
                     <td>
-                        <a href="{{url}}getCV?auth={{auth}}&filename={{a}}" class="glyphicon glyphicon-eye-open" target="_blank"></a>
+                        <a href="{{url}}cvs/{{a}}?auth={{auth}}" class="glyphicon glyphicon-eye-open" target="_blank"></a>
                         <span class="glyphicon glyphicon-remove" ng-click="deleteCV(a)"></span>
                     </td>
                 </tr>
