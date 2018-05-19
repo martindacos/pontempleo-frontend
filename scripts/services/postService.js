@@ -167,6 +167,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
             fd.append('fechaFinCourse', fechaFinCourse);
             fd.append('directionCourse', directionCourse);
             fd.append('file', file);
+            fd.append('coesco', false);
 
             //Promise
             return $http.post(uploadUrl, fd, config).then(function (response) {
