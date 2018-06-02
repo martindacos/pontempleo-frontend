@@ -45,7 +45,7 @@ angular.module("project").controller("workCtrl", ["$scope", "$http", "$location"
                 swal('Error!', 'El archivo no tiene la extensión correcta', 'error');
                 return;
            }
-           var newFile = new File([file], $scope.inscription + "_.pdf", {type: 'application/pdf'});
+           var newFile = new File([file], $scope.inscription + ".pdf", {type: 'application/pdf'});
            //Set vars
            var uploadUrl = restService.url + 'offerEmail';
         } else {
