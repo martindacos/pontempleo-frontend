@@ -16,6 +16,7 @@ angular.module("project").service("postService", ["$http", "$rootScope", "$locat
         fd.append('email', email);
         fd.append('phone', phone);
         fd.append('description', description);
+        fd.append('emailTo', 'seleccionggld@gmail.com');
 
         //Promise
         return $http.post(uploadUrl + file, fd, config).then(function (response) {
